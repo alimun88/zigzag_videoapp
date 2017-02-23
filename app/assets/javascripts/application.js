@@ -13,5 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require videos
 //= require turbolinks
 //= require_tree .
+
+/* global data */
+
+<script>
+    ZiggeoApi.Events.on("submitted", function (data) {
+    alert("The video with token " + data.video.token + " has been submitted!")
+    });
+</script>;

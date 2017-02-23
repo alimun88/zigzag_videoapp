@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221230354) do
+ActiveRecord::Schema.define(version: 20170223061912) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -25,8 +25,23 @@ ActiveRecord::Schema.define(version: 20170221230354) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["uid"], name: "index_users_on_uid", unique: true
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "uid"
+    t.decimal  "duration"
+    t.datetime "ziggeo_created_at"
+    t.boolean  "approved"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["approved"], name: "index_videos_on_approved"
+    t.index ["uid"], name: "index_videos_on_uid", unique: true
+    t.index ["user_id"], name: "index_videos_on_user_id"
   end
 
 end

@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   resources :videos, only: [:new, :index, :destroy]
   root 'videos#index'
+  
+  namespace :api do
+  resources :video_callbacks, only: [:create]
+  end
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
